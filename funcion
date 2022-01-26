@@ -1,0 +1,32 @@
+function [A,B] = polinomial(m,x,y,n)
+%{
+Joel Quintuna
+m: a que grado de polinomio se desea aproximar
+x,y: vectores que contienen el conjunto de puntos que se desea 
+n es el numero de puntos que se tienen en los vectores x e y
+A : representa los coeficientes de las n ecuaciones de m grado
+B : representa los terminosindependientes de la matriz A
+
+
+%}
+
+for j=1:m+1
+    for k=1:m+1
+        suma1=0;
+        for i=1:n
+            suma1=suma1+(x(i)^(j+k-2));
+        end
+        A(j,k)=suma1;%se guarda en la matriz los coeficientes calculados para reolver un el sistema Ax=b
+    end
+end
+%se creara un vector b, que sera los terminos independientes del sistema de
+%ecuiaciones lineales a resolver
+
+for j=1:m+1
+   s2=0;
+   for i=1:n
+       s2=s2+(y(i)*x(i)^(j-1));%al igual que para la matriz se se suma los elementos i,j desde 1 hasta n (numero de puntos)
+   end
+   B(j)=s2;% vector de los teminos independientes
+end
+end
