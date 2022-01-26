@@ -1,0 +1,7 @@
+x=1:5; %vector de valores 
+m=4;
+y=2:7;
+n=length(x);
+[A,b]=polinomial(m,x,y,n);
+k=GaussP(A,b);
+fprintf('%d',k);
